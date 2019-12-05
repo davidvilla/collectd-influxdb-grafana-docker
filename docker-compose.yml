@@ -36,7 +36,10 @@ services:
       - "8125:8125"
       - "8094:8094"
       - "8092:8092/udp"
+    environment:
+      - HOST_PROC=/host/proc
     volumes:
+      - /proc:/host/proc:ro
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
   kapacitor:
     image: "kapacitor:latest"
